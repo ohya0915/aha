@@ -31,7 +31,7 @@ login_manager.login_message_category = 'info'
 def show_swagger():
     return """
     <head>
-    <meta http-equiv="refresh" content="0; url=http://petstore.swagger.io/?url=http://127.0.0.1:8000/api/swagger.json" />
+    <meta http-equiv="refresh" content="0; url=http://petstore.swagger.io/?url=https://ohya.pagekite.me/api/swagger.json" />
     </head>
     """
 
