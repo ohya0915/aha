@@ -263,15 +263,6 @@ class LoginResource(Resource):
             else:
                 print('error:', result[0])
                 return jsonify({'code': 500,'message': 'Server is busy.'})
-
-        # if user and bcrypt.check_password_hash(user.password, password):
-        #     if user.active_state == Config.USER_DEFAULT_ACTIVE_STATE and not active_state:
-        #         return jsonify({'warning': 'Please verify your email first.'})
-                            
-        #     login_user(user)
-        #     return jsonify(user.name)
-        # else:
-        #     return jsonify({'warning': 'Please check your account and password.'})
         
 
 class FirstLoginResource(Resource):
@@ -450,11 +441,6 @@ class SendWelcomeMailResource(Resource):
         send_mail_arg = args.parse_args()
         name = send_mail_arg['name']
         email = send_mail_arg['email']
-        # user = User.query.filter_by(email=email).first()
-        
-        # print('user=======', user)
-        # if not user:
-        #     return jsonify({'warning': 'Please register first.'})
         result = send_mail_service(name=name, email=email, where='welcome')
         if not result:
             return jsonify({'code': 0,'message': 'Your welcome mail has been send'})
@@ -471,7 +457,7 @@ class SendWelcomeMailResource(Resource):
 class ResetPasswordResource(Resource):
     @swagger.doc({
         'tags': ['Han\'s web'],
-        'description': 'Send welcome mail',
+        'description': 'Reset passwprd',
         'parameters': [
             {
                 'name': 'name',
@@ -533,11 +519,11 @@ class ResetPasswordResource(Resource):
                     }
                 }
             },
-            '412': {
+            '414': {
                 'description': 'Failed',
                 'examples': {
                     'application/json': {
-                        'code': 412,
+                        'code': 414,
                         'message': "Current password is not correct."
                     }
                 }
@@ -585,7 +571,7 @@ class ResetPasswordResource(Resource):
                 elif check_password[0] == "Passowrd does not meet complexity rules":
                     return jsonify({'code': 411,'message': "Passowrd doesn\'t meet complexity rules"})
         else:
-            return jsonify({'code': 412,'message': 'Current password is not correct.'})
+            return jsonify({'code': 414,'message': 'Current password is not correct.'})
 
 
 class ChangeVisitInfoResource(Resource):
@@ -647,7 +633,7 @@ class ChangeVisitInfoResource(Resource):
 class ForGotPasswordResource(Resource):
     @swagger.doc({
         'tags': ['Han\'s web'],
-        'description': 'Change visit info',
+        'description': 'Forgot password',
         'parameters': [
             {
                 'name': 'name',
@@ -731,7 +717,7 @@ class ForGotPasswordResource(Resource):
 class SetPasswordResource(Resource):
     @swagger.doc({
         'tags': ['Han\'s web'],
-        'description': 'Change visit info',
+        'description': 'Set password',
         'parameters': [
             {
                 'name': 'set_password_code',
