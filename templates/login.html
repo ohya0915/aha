@@ -11,7 +11,7 @@
                     {{ form.password }}
                 </p>
                 <p align="center">
-                    <!-- <a href="google/">
+                    <a href="google/">
                         <img id="google"
                         src="https://img.shields.io/badge/Google-Connect-brightgreen?style=for-the-badge&labelColor=black&logo=google"
                         alt="Google"> <br>
@@ -27,7 +27,7 @@
                         <img id="twitter"
                            src="https://img.shields.io/badge/Twitter-Connect-brightgreen?style=for-the-badge&labelColor=black&logo=twitter"
                            alt="Twitter"> <br>
-                    </a> -->
+                    </a>
                 </p>
                 <p align="center">
                     <button type='submit'>GO</button>
@@ -39,10 +39,6 @@
                     <a href="{{ url_for('main.forget_password') }}">Forgot Password</a>
                 </p>
         </form>
-        <p align="center">
-            Google, Facebook, Twitter的Oauth不能使用免費網域，所以將它們藏起來了<br>
-            可以去github: https://github.com/ohya0915/aha 下載原始碼<br>
-        </p>
         
     </div>
 {% endblock content %}

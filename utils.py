@@ -35,7 +35,7 @@ def password_policy_check(user_password):
 
 def _operator():
     
-    return current_user.fullname if current_user and current_user.is_authenticated else None
+    return current_user.name if current_user and current_user.is_authenticated else None
 
 
 def _format_addr(s):

@@ -220,7 +220,8 @@ def google():
         client_secret=GOOGLE_CLIENT_SECRET,
         server_metadata_url=CONF_URL,
         client_kwargs={
-            'scope': 'openid email profile'
+            'scope': 'openid email profile',
+            'prompt': 'select_account'
         }
     )
      
